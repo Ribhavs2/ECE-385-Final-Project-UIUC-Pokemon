@@ -10,7 +10,8 @@ We started with a generic Pokémon map found online and customized it by adding 
 
 In our game, the total map size is 380x406, but to conserve memory, we opted to display only a 240x160 segment on the screen at any given time. This viewable area is strategically centered on the screen by offsetting `drawX` by 200 and `drawY` by 160. We also implemented checks to ensure these offsets remain within the screen's range. If these values exceed the screen boundaries, we set a flag called "offscreen" to determine whether to render the background or simply display black.
 
-![init_map4](https://github.com/user-attachments/assets/2c585f95-aae4-4d27-95dd-ff94d2590ebe)
+<img src="https://github.com/user-attachments/assets/2c585f95-aae4-4d27-95dd-ff94d2590ebe" width="500">
+
 Fig 1: Entire Map for UIUC Pokemon
 
 ### Scrolling
@@ -48,4 +49,21 @@ Fig 2: Battle Background
 <img src="https://github.com/user-attachments/assets/705ddae0-b09f-4ca5-bf7d-7d26a79f09b6" width="192"> <img src="https://github.com/user-attachments/assets/4b14c017-e1ed-4f48-ae07-e953e63b32aa" width="192"> <img src="https://github.com/user-attachments/assets/6ac882cf-ad02-46ba-9b15-76a804029dfe" width="192"> <img src="https://github.com/user-attachments/assets/8afa1435-5cdc-4ad8-a375-a55622d5588e" width="192">
 
 Fig 4: Pokemons used in game
+
+
+
+### Item Shop
+The item shop (Fig 4) serves as a hub for obtaining upgrades, especially since the final boss presents a significant challenge. Upon entering the shop, players have the option to purchase from a selection of three different items, with each item priced at one credit.
+
+- Attack Doubler: Doubles the user’s attack by 2
+- Stun Guarantee: Guarantees that the stun will happen
+- Deodorant: Gives full health to the user
+
+When in the item shop, we have three distinct states in our FSM to facilitate the selection process, allowing players to easily toggle between items while making their choices. When a purchase is made by pressing enter, the credit count on the hex display decreases by one. Additionally, this display is utilized to indicate the quantity of each power-up the player currently possesses. It's important to note that players are limited to buying only one of each type of power-up, and purchases are not possible without sufficient credits. All three of the above states map to 3 distinct states where the above computation happens. Exiting the shop is as simple as pressing the escape key.
+
+Once equipped with these power-ups, players can deploy them during battles by pressing the space bar instead of the enter key when their cursor is on a desired move. We streamlined the integration of power-ups into the game mechanics without adding separate states, directly modifying health values based on the specific power-up used.
+
+<img src="https://github.com/user-attachments/assets/467a1da0-f187-4433-a716-66a1edf25a3f" width="360">
+
+Fig 4: Item Shop
 
