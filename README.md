@@ -22,3 +22,30 @@ We enhanced character animation in our game by incorporating 12 distinct sprites
 Our rendering logic determines whether to draw the character or the background based on the position parameters. Specifically, the ball_on flag is set when `drawX` and `drawY` fall within the specified range, signaling that the character sprite should be rendered.
 
 To manage these animations effectively, we utilize a dedicated sprite sheet that contains all 12 sprites. This setup not only organizes the visual assets efficiently but also streamlines the process of switching between sprites during gameplay.
+
+### Battle
+When the player's character approaches specific coordinates on the map, which represent the entrance to one of the three mentioned buildings, the game transitions into battle mode (Fig 2). Initially, we display the boss associated with that particular building, with different bosses appearing based on the location. Additionally, we created a sprite sheet for dialogue boxes, presenting unique dialogues for each boss to enhance the narrative. There is a pause built into the state using counters to give players time to absorb the scene before the actual battle commences.
+
+We crafted unique Pokémon for the player and each professor using generative AI, by inputting detailed prompts that encapsulate the distinctive traits we associate with each professor. To display these pokemons, we utilized separate sprite sheets for each Pokémon (Fig 3).
+
+During the battle, players can choose from various moves, each accompanied by distinct animations. The moves include:
+- Attack: Inflicts damage on the opponent.
+- Shower: Heals the player.
+- Stun: Either successfully incapacitates the opponent, causing them to lose a turn, or backfires and damages the player.
+- Drop Class: Allows the player to exit the battle.
+
+We use 4 states when the user can toggle between each move using WASD to get the information about them and can press enter to select the move. Three of the states that display animations are mapped to its own next state to display the respective animation. Each move's animation is rendered smoothly, using separate sprite sheets, with each sprite displayed for(120 clock cycles)/(number of sprites on the sheet)  to ensure fluid motion.
+
+The opponent's response is randomized, choosing between attack, stun, or heal. This randomization is achieved by multiplying two large numbers each clock cycle and taking the result modulo 3. The opponent's moves are animated using similar logic with their own sprite sheets. All of the opponent's logic is done in one state.
+
+The battle alternates between player and opponent moves until the health of either drops below zero, leading to an exit screen. Depending on whose health depletes first, a win or lose screen is displayed, featuring the same boss with tailored dialogue to reflect the battle's outcome. Once a battle is won, the credits of the user will be updated by 2 and this will be reflected on the hex display of the FPGA.
+
+![battle_map3](https://github.com/user-attachments/assets/f160299c-0277-4e80-816f-4b7b18ce533c)
+
+Fig 2: Battle Background
+
+
+<img src="https://github.com/user-attachments/assets/705ddae0-b09f-4ca5-bf7d-7d26a79f09b6" width="192"> <img src="https://github.com/user-attachments/assets/4b14c017-e1ed-4f48-ae07-e953e63b32aa" width="192"> <img src="https://github.com/user-attachments/assets/6ac882cf-ad02-46ba-9b15-76a804029dfe" width="192"> <img src="https://github.com/user-attachments/assets/8afa1435-5cdc-4ad8-a375-a55622d5588e" width="192">
+
+Fig 4: Pokemons used in game
+
