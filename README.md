@@ -67,3 +67,17 @@ Once equipped with these power-ups, players can deploy them during battles by pr
 
 Fig 4: Item Shop
 
+## Game FSM
+The FSM below does not encapsulate all the states but rather represents overarching game logic and important transitions.
+
+![image](https://github.com/user-attachments/assets/46e06532-ca3f-4847-a7de-630da9864c82)
+
+## Conclusion
+In conclusion, we successfully developed a Pokémon-themed game set at the University of Illinois at Urbana-Champaign, featuring battles against bosses modeled after university professors. Our game includes sophisticated features like map scrolling, dynamic battle animations, multiple sprites and health bars. We also introduced an item shop where players can acquire power-ups to enhance their gameplay experience. While the development process was both enjoyable and challenging, we devoted significant time to perfecting the randomization of moves and the mechanics behind the stun feature. Overall, this project not only tested our technical skills but also provided a highly engaging and educational experience.
+
+## References
+These are resources or tools that helped us build this project:
+
+- https://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/
+- https://www.piskelapp.com/
+- https://www.canva.com/ 
